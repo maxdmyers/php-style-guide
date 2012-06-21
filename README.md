@@ -28,6 +28,9 @@ Always use <code><?php</code> to delimit PHP code. Do not use the shorthand vers
   <li>Unary operators (<code>++, --</code>) should not have a space between the operator and the variable or number they are operating on.</li>
 </ul>
 
+<h2>Casting</h2>
+<p>Put a space between the (type) and the $variable in a cast: <code>(int) $mynumber</code>.</p>
+
 <h2>Control Structures</h2>
 <ul>
   <li>Control statements should have one space between the control keyword and opening parenthesis, to distinguish them from function calls.</li>
