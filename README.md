@@ -77,7 +77,7 @@ for ($i = 0; $i &lt; condition; $i++) {
   <li>Do no use a space between the closing paren and the colon.</li>
   <li>HTML inside the control structure should be indented.</li>
 </ul>
-Example:  
+Example:
 <pre>
 &lt;?php if (!empty($item)): ?&gt;
   &lt;p&gt;&lt;?php print $item; ?&gt;&lt;/p&gt;
@@ -104,7 +104,7 @@ Example:
 <ul>
   <li>A space should separate each element.</li>
   <li>Add spaces around the => key association operator.</li>
-  <li>Example: <code>$arr = array('hey', 'jude', 'git' => 'commit');<code></li>
+  <li>Example: <code>$arr = array('hey', 'jude', 'git' => 'commit');</code></li>
   <li>If the array spans more than 80 characters, each element should be broken up on its own line.</li>
   <li>Multi-line declarations should have elements indented.</li>
 </ul>
@@ -122,3 +122,23 @@ $arr = array(
 
 
 <p>...more to come.</p>
+
+
+<h2>Emacs Notes</h2>
+
+Since the style guide is similar to Drupal's, we can steal some configuration from <a href="http://drupal.org/node/59868">this "drupal-mode</a>" for our php-mode (this goes in .emacs, naturally):
+
+<pre>
+(add-hook 'php-mode-hook
+          (lambda ()
+            (setq c-basic-offset 2)
+            (setq indent-tabs-mode nil)
+            (setq fill-column 78)
+            (setq show-trailing-whitespace t)
+            (add-hook 'before-save-hook 'delete-trailing-whitespace)
+            (c-set-offset 'case-label '+)
+            (c-set-offset 'arglist-close 0)
+            (c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
+            (c-set-offset 'arglist-cont-nonempty 'c-lineup-math))) ; for DBTNG fields and values
+
+</pre>
